@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- required meta tags -->
+		<meta charset="UTF-8" />
+		<!-- code optimization for mobile devices -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+
+		<!-- page title -->
+		<title>Restaurants</title>
+
+		<!-- bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+
+		<!-- custom links -->
+		<link rel="stylesheet" href="stylesheets/style.css" />
+	</head>
+	<body>
+		<!-- Header Section start -->
+		<header class="header-section">
+			<a href="index.html" class="site-logo">
+				<img src="img/logo.png" alt="" />
+			</a>
+			<nav class="header-nav">
+				<ul class="main-menu">
+					<li><a href="index.html" class="active">Home</a></li>
+					<li><a href="about-us.html">About</a></li>
+					<li><a href="#">Buy</a></li>
+					<li>
+						<a href="#">Pages</a>
+						<ul class="sub-menu">
+							<li><a href="about-us.html">About Us</a></li>
+							<li>
+								<a href="search-result.html">Search Result</a>
+							</li>
+							<li><a href="single-property.html">Property</a></li>
+						</ul>
+					</li>
+					<li><a href="news.html">News</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+				<div class="header-right">
+					<div class="user-panel">
+						<a href="#" class="login">Sign in</a>
+						<a href="#" class="register">Join us</a>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<!-- Header Section end -->
+
+		<!-- Hero Section start -->
+		<section class="hero-section set-bg">
+			<div class="container">
+				<div class="hero-warp">
+					<form class="main-search-form">
+						<div class="search-type">
+							<div class="st-item">
+								<input
+									type="radio"
+									name="st"
+									id="buy"
+									checked
+								/>
+								<label for="buy">Buy</label>
+							</div>
+							<div class="st-item">
+								<input type="radio" name="st" id="rent" />
+								<label for="rent">Rent</label>
+							</div>
+							<div class="st-item">
+								<input type="radio" name="st" id="sell" />
+								<label for="sell">Sell</label>
+							</div>
+							<div class="st-item">
+								<input type="radio" name="st" id="property" />
+								<label for="property">Property Value</label>
+							</div>
+							<div class="st-item">
+								<input type="radio" name="st" id="agents" />
+								<label for="agents">Agents</label>
+							</div>
+						</div>
+						<div class="search-input">
+							<input
+								type="text"
+								placeholder="Search by state, postcode or suburb"
+							/>
+							<button class="site-btn">Search</button>
+						</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit, sed do eiusmod tempor incididunt ut labore et
+							dolore magna aliqua. Quis ipsum suspendisse ultrices
+							gravida.
+						</p>
+					</form>
+				</div>
+			</div>
+		</section>
+		<!-- Hero Section end -->
+
+		<!-- Restaurant Section -->
+		<section class="property-section">
+			<div class="container">
+				<div class="section-title">
+					<h2>All restaurants</h2>
+				</div>
+				<div id="list">
+
+				</div>
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="property-item">
+							<div class="pi-image">
+								<img src="/images/restaurantgg.jpg" alt="" />
+								<div class="pi-badge new">New</div>
+							</div>
+							<h3>$469,000</h3>
+							<h5>3 Bedrooms Townhouse</h5>
+							<p>
+								Donec eget efficitur ex. Donec eget dolor vitae
+								eros feugiat tristique id vitae massa. Proin
+								vulputate congue rutrum. Fusce lobortis a enim
+								eget tempus. Class aptent taciti sociosqu ad
+								litora.
+							</p>
+							<a href="#" class="readmore-btn">Find out more</a>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="property-item">
+							<div class="pi-image">
+								<img src="img/property/2.jpg" alt="" />
+								<div class="pi-badge offer">Offer</div>
+							</div>
+							<h3>$369,000</h3>
+							<h5>3 Bedrooms Townhouse</h5>
+							<p>
+								Donec eget efficitur ex. Donec eget dolor vitae
+								eros feugiat tristique id vitae massa. Proin
+								vulputate congue rutrum. Fusce lobortis a enim
+								eget tempus. Class aptent taciti sociosqu ad
+								litora.
+							</p>
+							<a href="#" class="readmore-btn">Find out more</a>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="property-item">
+							<div class="pi-image">
+								<img src="img/property/3.jpg" alt="" />
+								<div class="pi-badge new">New</div>
+							</div>
+							<h3>$560,000</h3>
+							<h5>3 Bedrooms Townhouse</h5>
+							<p>
+								Donec eget efficitur ex. Donec eget dolor vitae
+								eros feugiat tristique id vitae massa. Proin
+								vulputate congue rutrum. Fusce lobortis a enim
+								eget tempus. Class aptent taciti sociosqu ad
+								litora.
+							</p>
+							<a href="#" class="readmore-btn">Find out more</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Restaurant Section end -->
+
+
+		<div class="container">
+			<h1>Restaurant List</h1>
+			<div id="target"></div>
+		</div>
+
+		<!-- JQuery -->
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"
+		></script>
+		<!-- Popper.jst-->
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<!-- Boostrap.js -->
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
+
+		<!-- custom JS scripts -->
+		<script src="javascripts/main.js"></script>
+	</body>
+</html>
