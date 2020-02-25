@@ -10,6 +10,22 @@ const renderRestaurantsTemplate = data => {
   });
 };
 
+
+
+
+
+
+const renderTitle = rest =>{
+  console.log("Entro detalles restaurant",rest);
+  const title = document.getElementById("title");
+  title.textContent = `${rest.name}`;
+};
+
+
+
+
+
+
 const renderRestaurants = data => {
   console.log("got data", data);
 
@@ -17,8 +33,6 @@ const renderRestaurants = data => {
   let counter = 0;
   let totalRow=0;
   let row = document.createElement("div");;
-  //let row = document.createElement("div");
-  //row.className = "row";
 
   for(const restaurant of data){
 
@@ -57,7 +71,15 @@ const renderRestaurants = data => {
     const button = document.createElement("a");
     button.className = "readmore-btn";
     button.textContent = "Find out more";
-    button.setAttribute("href","#");
+
+    button.setAttribute("href","/details.html");
+
+    //TODO: send restaurant to the other html file
+    button.addEventListener("click", e =>{
+      console.log("button was clicked");
+      renderTitle(restaurant);
+    });
+
 
     divImage.append(image);
 
@@ -73,20 +95,6 @@ const renderRestaurants = data => {
     console.log("Llego al final");
 
   };
-
-
-
-  /*
-  data.forEach(restaurant => {
-    const div = document.createElement("div");
-    div.textContent = `${restaurant.name} ${restaurant.area}`;
-    console.log("counter",counter);
-    if(counter%3===0){
-      console.log("nuevo div");
-    }
-    counter++;
-    target.append(div);
-  });*/
 };
 
 fetch("./getRestaurants")
