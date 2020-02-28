@@ -3,8 +3,10 @@ var router = express.Router();
 
 //En la carpeta anterior es que se encuentra el archivo
 const MongoUtils = require("../db/MongoUtils.js");
+const DetailUtils = require("../pages/DetailsUtils.js");
 
 const mu = MongoUtils();
+const details = DetailUtils();
 
 // Data endpoint: retorna un archivo json
 router.get("/getRestaurants", function(req, res) {
@@ -17,7 +19,6 @@ router.get("/getRestaurants", function(req, res) {
     .catch(err => console.log(err));
 });
 
-
 router.get("/details/:id", (req, res) => {
   console.log("Llegue a los detalles");
   const id = req.params.id;
@@ -27,7 +28,7 @@ router.get("/details/:id", (req, res) => {
     .then(restaurant => {
       console.log("pintando el restaurante en router", restaurant);
       res.send(`
-        ${restaurant.map(g => `<h1>${g.name}</h1>`)}`);
+        ${restaurant.map(g => details.buildFile(g))}`);
     })
     .catch(err => console.log(err));
 });
