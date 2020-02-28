@@ -6,17 +6,41 @@ const MongoUtils = require("../db/MongoUtils.js");
 
 const mu = MongoUtils();
 
-
-
 // Data endpoint: retorna un archivo json
 router.get("/getRestaurants", function(req, res, next) {
   console.log("Backend!!");
-  //Server side rendering
+  //Client side rendering
   mu.connect()
-  	.then(mu.getDocuments)
-  	//for Front side rendering send the html instead of the json file
-  	.then(restaurants => res.json(restaurants))
-  	.catch(err => console.log(err));
+    .then(mu.getDocuments)
+    //for Front side rendering send the html instead of the json file
+    .then(restaurants => res.json(restaurants))
+    .catch(err => console.log(err));
+});
+
+router.get("/detailsss/:id", (req, res) => {
+  console.log("Llegue a los detalles");
+  mu.connect()
+    .then(mu.getRestaurant)
+    .then(restaurant => {
+      console.log("pintando el restaurante en router", restaurant);
+      res.send(`
+        ${restaurant.map(g => `<h1>${g.name}</h1>`)}`);
+    })
+    .catch(err => console.log(err));
+});
+
+router.get("/details/:id", (req, res) => {
+  console.log("Llegue a los detalles");
+  const id = req.params.id;
+  console.log("identificador",req.params.id);
+  mu.connect()
+    .then(client => mu.getRestaurant(client,id))
+    .then(restaurant => {
+      console.log("pintando el restaurante en router", restaurant);
+      res.send(`
+        ${restaurant.map(g => `<h1>${g.name}</h1>`)}`);
+    })
+    .catch(err => console.log(err));
 });
 
 module.exports = router;

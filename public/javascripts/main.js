@@ -72,14 +72,8 @@ const renderRestaurants = data => {
     button.className = "readmore-btn";
     button.textContent = "Find out more";
 
-    button.setAttribute("href","/details.html");
-
-    //TODO: send restaurant to the other html file
-    button.addEventListener("click", e =>{
-      console.log("button was clicked");
-      renderTitle(restaurant);
-    });
-
+    const id = restaurant._id;
+    button.setAttribute("href",`./details/${id}`);
 
     divImage.append(image);
 
