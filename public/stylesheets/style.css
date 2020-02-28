@@ -297,6 +297,7 @@ Restaurant section
 }
 
 .property-section .section-title {
+	margin-top:70px;
 	margin-bottom: 90px;
 }
 
@@ -364,3 +365,14 @@ Restaurant section
 	text-align: center
 }
 
+/*---------------------
+Restaurant details CSS
+ -----------------------*/
+ #trial {
+ 	font: 40px "Lucida Grande", Helvetica, Arial, sans-serif;
+	border: 2px solid red;
+ }
+ .navi {
+	color = blue;
+	border: 2px solid green;
+ }
