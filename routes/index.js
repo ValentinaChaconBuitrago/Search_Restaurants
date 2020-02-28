@@ -7,7 +7,7 @@ const MongoUtils = require("../db/MongoUtils.js");
 const mu = MongoUtils();
 
 // Data endpoint: retorna un archivo json
-router.get("/getRestaurants", function(req, res, next) {
+router.get("/getRestaurants", function(req, res) {
   console.log("Backend!!");
   //Client side rendering
   mu.connect()
@@ -17,17 +17,6 @@ router.get("/getRestaurants", function(req, res, next) {
     .catch(err => console.log(err));
 });
 
-router.get("/detailsss/:id", (req, res) => {
-  console.log("Llegue a los detalles");
-  mu.connect()
-    .then(mu.getRestaurant)
-    .then(restaurant => {
-      console.log("pintando el restaurante en router", restaurant);
-      res.send(`
-        ${restaurant.map(g => `<h1>${g.name}</h1>`)}`);
-    })
-    .catch(err => console.log(err));
-});
 
 router.get("/details/:id", (req, res) => {
   console.log("Llegue a los detalles");

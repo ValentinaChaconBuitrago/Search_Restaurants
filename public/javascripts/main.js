@@ -1,31 +1,3 @@
-const renderRestaurantsTemplate = data => {
-  console.log("got data", data);
-
-  const target = document.getElementById("target");
-
-  data.forEach(restaurant => {
-    const div = document.createElement("div");
-    div.textContent = `${restaurant.name} ${restaurant.area}`;
-    target.append(div);
-  });
-};
-
-
-
-
-
-
-const renderTitle = rest =>{
-  console.log("Entro detalles restaurant",rest);
-  const title = document.getElementById("title");
-  title.textContent = `${rest.name}`;
-};
-
-
-
-
-
-
 const renderRestaurants = data => {
   console.log("got data", data);
 
@@ -82,8 +54,6 @@ const renderRestaurants = data => {
     inner.append(location);
     inner.append(button);
 
-
-    //div.textContent=`${restaurant.name} ${restaurant.area}`;
     div.append(inner);
     row.append(div);
     console.log("Llego al final");
