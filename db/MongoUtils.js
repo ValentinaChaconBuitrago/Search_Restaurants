@@ -17,17 +17,24 @@ function MongoUtils(){
   	const collectionRestaurant = client.db("web").collection("restaurants");
   	console.log("Getting documents");
   	//retorna una promesa
-  	return collectionRestaurant.find({}).toArray();
+  	return collectionRestaurant.find({}).toArray().finally(()=>{
+      console.log("closing client");
+      client.close();
+    });
   };
 
   mu.getRestaurant = (client,id) => {
     const collectionRestaurant = client.db("web").collection("restaurants");
     console.log("Getting restaurant");
     //retorna una promesa
-    return collectionRestaurant.find({ _id: ObjectId(id)}).toArray();
+    return collectionRestaurant.find({ _id: ObjectId(id)}).toArray().finally(()=>{
+      console.log("closing client");
+      client.close();
+    });
   };
 
   return mu;
 }
 
 module.exports = MongoUtils;
+

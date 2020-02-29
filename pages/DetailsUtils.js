@@ -10,9 +10,13 @@ function DetailsUtils() {
 		<meta charset="UTF-8" />
 		<!-- code optimization for mobile devices -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- TODO: meta tag for page description in browser -->
-		<meta name="author" content="Valentina Chacon Buitrago">
-		<meta name="description" content="Valentina's interactive resume.">
+		<!-- meta tag for page description in browser -->
+		<meta name="author" content="Valentina Chacon Buitrago, Juan Diego Arango">
+		<meta name="description" content="Restaurant seach application">
+
+
+		<!-- tab tittle -->
+		<title>Restaurants</title>
 
 		<!-- bootstrap CSS -->
 		<link
@@ -22,14 +26,12 @@ function DetailsUtils() {
 			crossorigin="anonymous"
 		/>
 
-		<!-- tab tittle -->
-		<title>restaurant</title>
-
-		<!-- TODO:favicon -->
-
 
 		<!-- TODO:custom links -->
 		<link rel="stylesheet" href="../stylesheets/style.css" />
+		<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon"/>
+
 
 
 
