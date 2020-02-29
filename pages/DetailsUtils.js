@@ -108,14 +108,6 @@ function DetailsUtils() {
 							</p>
 						</div>
 
-					<div class="video-item">
-						<img src="img/video-img.jpg" alt="" />
-						<a
-							href="https://www.youtube.com/watch?v=Sz_1tkcU0Co"
-							class="video-play"
-							><span class="i fa fa-play"></span
-						></a>
-					</div>
 					<!--
 					<div class="map-widget">
 						<iframe
