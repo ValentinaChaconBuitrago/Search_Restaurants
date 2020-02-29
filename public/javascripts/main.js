@@ -4,7 +4,7 @@ const renderRestaurants = data => {
   const target = document.getElementById("list");
   let counter = 0;
   let totalRow=0;
-  let row = document.createElement("div");;
+  let row = document.createElement("div");
 
   for(const restaurant of data){
 
@@ -46,6 +46,7 @@ const renderRestaurants = data => {
 
     const id = restaurant._id;
     button.setAttribute("href",`./details/${id}`);
+    //button.setAttribute("href","detailsTrial.html");
 
     divImage.append(image);
 

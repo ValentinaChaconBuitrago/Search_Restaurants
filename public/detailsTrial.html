@@ -1,8 +1,4 @@
-function DetailsUtils() {
-  const mu = {};
-
-  mu.buildFile = restaurant => {
-    const template = `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<!-- required meta tags -->
@@ -135,6 +131,16 @@ function DetailsUtils() {
 				</div>
 			</div>
 		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="navi">
+					<h1 id="trial">${restaurant.name}</h1>
+					<h2>${restaurant.area}</h2>
+				</div>
+			</div>
+		</div>
+
 		<!-- JQuery -->
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -158,14 +164,8 @@ function DetailsUtils() {
 		<script src="../javascripts/details.js"></script>
 		<!-- function that modifies the number of stars displayed in the details section -->
 		<script>
-			renderStars(${restaurant.rating});
-			renderPrice(${restaurant.price});
+			renderStars($restaurant.rating);
+			renderPrice($restaurant.price);
 		</script>
 	</body>
-</html>`;
-    return template;
-  };
-  return mu;
-}
-
-module.exports = DetailsUtils;
+</html>
