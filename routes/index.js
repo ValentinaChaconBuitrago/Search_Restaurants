@@ -26,7 +26,6 @@ router.get("/details/:id", (req, res) => {
   mu.connect()
     .then(client => mu.getRestaurant(client,id))
     .then(restaurant => {
-      console.log("pintando el restaurante en router", restaurant);
       res.send(`
         ${restaurant.map(g => details.buildFile(g))}`);
     })
