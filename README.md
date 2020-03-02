@@ -43,6 +43,9 @@ yarn start
 ```
 After this, the application will be available at http://localhost:3000/
 
+## Deployed Application
+[Restaurants](https://bogota-restaurants.herokuapp.com/)
+
 ## License
 [MIT License](https://github.com/ValentinaChaconBuitrago/Search_Restaurants/blob/master/LICENSE)
 
