@@ -32,4 +32,21 @@ router.get("/details/:id", (req, res) => {
     .catch(err => console.log(err));
 });
 
+router.get("/usuarios/:id", (req, res) => {
+  console.log("Llegue a los usuarios");
+  const id = req.params.id;
+  console.log("identificador",req.params.id);
+  mu.connect()
+    .then(client => mu.getUser(client,id))
+    .then(user => res.json(user))
+    .catch(err => console.log(err));
+});
+router.get("/getUsers", function(req, res) {
+  console.log("Backend!!");
+  //Client side rendering
+  mu.connect()
+    .then(client => mu.getUsers(client,(users) => res.json(users)))
+    //for Front side rendering send the html instead of the json file
+    .catch(err => console.log(err));
+});
 module.exports = router;
