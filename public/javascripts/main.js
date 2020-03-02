@@ -161,7 +161,37 @@ function healthy(param) {
   healthyp = $(param).is(":checked");
   filtering();
 }
-
+function createRestaurant() {
+  console.log("llegue");
+  console.log("element", document.getElementById("name").value);
+  let name = document.getElementById("name").value;
+  let area = document.getElementById("area").value;
+  let address = document.getElementById("address").value;
+  let openinghours = document.getElementById("openinghours").value;
+  let closinghours = document.getElementById("closinghours").value;
+  let type = document.getElementById("type").value;
+  let specialty = document.getElementById("specialty").value;
+  let rating = 4;
+  let price = document.getElementById("price").value;
+  let image = document.getElementById("image").value;
+  let description = document.getElementById("description").value;
+  var restaurant = JSON.stringify({
+    name: name,
+    area: area,
+    address: address,
+    openinghours: openinghours,
+    closinghours: closinghours,
+    type: type,
+    specialty: specialty,
+    rating: rating,
+    price: price,
+    image: image,
+    description: description
+  });
+  console.log("va por el add");
+  console.log(restaurant);
+  addRestaurant(restaurant);
+}
 let filtering = () => {
   document.getElementById("list").innerHTML = "";
   const target = document.getElementById("list");
@@ -287,12 +317,15 @@ function vale(obj) {
 function addRestaurant(restaurant) {
   fetch("./restaurant", {
     method: "POST", // or 'PUT'
-    body: JSON.stringify(restaurant), // data can be `string` or {object}!
+    body: restaurant, // data can be `string` or {object}!
     headers: {
       "Content-Type": "application/json"
     }
   })
     .then(res => res.json())
     .catch(error => console.error("Error:", error))
-    .then(response => console.log("Success:", response));
+    .then(response => {
+      console.log("Success:", response);
+      filtering();
+    });
 }
