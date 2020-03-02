@@ -1,7 +1,7 @@
 # RestaurantSearch
 RestaurantSearch is a web application meant to help people find restaurants according to location, preferences and prices, among others. We provide a list of restaurants and their details in order to help people find the one that fits best for them. 
 
-PHOTO GOES HERE
+![](files/mainPage.png)
 
 This application has API REST to connect to a MongoDB obtaining restaurants and their details. 
 ## Authors
@@ -32,7 +32,7 @@ mongo
 In case you are using Mongo Atlas and your data is stored in the cloud, whitelist your IP address and create a new data base user. More details on how to configure this set up [here](https://docs.atlas.mongodb.com/driver-connection/).
 
 ### Yarn for MAC
-This project was developed using MAC's iOS, if using this same OS install yarn use the following command:
+This project was developed using MAC's iOS, if using this same OS install yarn using the following command:
 ```
 brew install yarn
 ```
@@ -42,4 +42,8 @@ Because this project was implemented using Mongo Atlas, the database is already 
 yarn start
 ```
 After this, the application will be available at http://localhost:3000/
+
+## License
+[MIT License](https://github.com/ValentinaChaconBuitrago/Search_Restaurants/blob/master/LICENSE)
+
 
