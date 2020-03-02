@@ -1,226 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- required meta tags -->
-		<meta charset="UTF-8" />
-		<!-- code optimization for mobile devices -->
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-		/>
+  <head>
+    <!-- required meta tags -->
+    <meta charset="UTF-8" />
+    <!-- code optimization for mobile devices -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-		<!-- meta tag for page description and author in browser -->
-		<meta name="author" content="Valentina Chacon Buitrago, Juan Diego Arango" />
-		<meta name="description" content="Restaurant search application" />
+    <!-- meta tag for page description and author in browser -->
+    <meta
+      name="author"
+      content="Valentina Chacon Buitrago, Juan Diego Arango"
+    />
+    <meta name="description" content="Restaurant search application" />
 
-		<!-- page title -->
-		<title>Restaurants</title>
+    <!-- page title -->
+    <title>Restaurants</title>
 
-		<!-- bootstrap CSS -->
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-			crossorigin="anonymous"
-		/>
+    <!-- bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
 
-		<!-- custom links -->
-		<link rel="stylesheet" href="stylesheets/style.css"/>
-		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-		<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-	</head>
-	<body>
-		<!-- Header Section start -->
-		<header class="header-section">
-			<a href="index.html" class="site-logo">
-				<img src="img/logo.png" alt="" />
-			</a>
-			<nav class="header-nav">
-				<ul class="main-menu">
-					<li><a href="index.html" class="active">Home</a></li>
-					<li><a href="about-us.html">About</a></li>
-					<li><a href="#">Buy</a></li>
-					<li>
-						<a href="#">Pages</a>
-						<ul class="sub-menu">
-							<li><a href="about-us.html">About Us</a></li>
-							<li>
-								<a href="search-result.html">Search Result</a>
-							</li>
-							<li><a href="single-property.html">Property</a></li>
-						</ul>
-					</li>
-					<li><a href="news.html">News</a></li>
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
-				<div class="header-right">
-					<div class="user-panel">
-						<a href="#" class="login">Sign in</a>
-						<a href="#" class="register">Join us</a>
-					</div>
-				</div>
-			</nav>
-		</header>
-		<!-- Header Section end -->
+    <!-- custom links -->
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- Header Section start -->
+    <header class="header-section">
+      <a href="index.html" class="site-logo">
+        <img src="img/logo.png" alt="" />
+      </a>
+      <nav class="header-nav">
+        <ul class="main-menu">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="auth.html">Add Restaurant</a></li>
+        </ul>
+        <div class="header-right">
+          <div class="user-panel">
+            <a href="#" class="login">Sign in</a>
+            <a href="#" class="register">Join us</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Header Section end -->
 
-		<!-- Hero Section start -->
-		<section class="hero-section set-bg">
-			<div class="natilla">
-			<div class="container">
-				<div class="hero-warp">
-					<div class="modal-body row">
-						<div class="col-md-4">
-							<div class="form-check">
-								<div class="container">
-									<div class="row">
-										<h4>Time of day</h4>
-									</div>
-									<div class="row">
-										<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="breakfast(this)">
-										<label class="form-check-label" for="defaultCheck">
-										  Breakfast
-										</label>
-									</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2 onchange="lunch(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Lunch
-									</label>
-								</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="dinner(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Dinner
-									</label>
-								</div>
-							   </div>
-							  </div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-check">
-								<div class="container">
-									<div class="row">
-										<h4>Zone</h4>
-									</div>
-									<div class="row">
-										<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="centro(this)">
-										<label class="form-check-label" for="defaultCheck">
-										  Centro
-										</label>
-									</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="chapinero(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Chapinero Alto
-									</label>
-								</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="parque(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Parque 93
-									</label>
-								</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="salitre(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Salitre 
-									</label>
-								</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="usaquen(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Usaquén 
-									</label>
-								</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="chico(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Chicó 
-									</label>
-								</div>
+    <!-- Hero Section start -->
+    <section class="hero-section set-bg">
+      <div class="natilla">
+        <div class="container">
+          <div class="hero-warp">
+            <div class="modal-body row">
+              <div class="col-md-4">
+                <div class="form-check">
+                  <div class="container">
+                    <div class="row">
+                      <h4>Time of day</h4>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="breakfast(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Breakfast
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input class="form-check-input" type="checkbox" value=""
+                      id="defaultCheck2 onchange="lunch(this)">
+                      <label class="form-check-label" for="defaultCheck">
+                        Lunch
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="dinner(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Dinner
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <div class="container">
+                    <div class="row">
+                      <h4>Zone</h4>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="centro(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Centro
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="chapinero(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Chapinero Alto
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="parque(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Parque 93
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="salitre(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Salitre
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="usaquen(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Usaquén
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="chico(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Chicó
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <div class="container">
+                    <div class="row">
+                      <h4>Type of food</h4>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="colombian(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Colombian
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="italian(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Italian
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="healthy(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Healthy
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="japanese(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Japanese
+                      </label>
+                    </div>
+                    <div class="row">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="defaultCheck2"
+                        onchange="mexican(this)"
+                      />
+                      <label class="form-check-label" for="defaultCheck">
+                        Mexican
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Hero Section end -->
 
-							   </div>
-							  </div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-check">
-								<div class="container">
-									<div class="row">
-										<h4>Type of food</h4>
-									</div>
-									<div class="row">
-										<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="colombian(this)">
-										<label class="form-check-label" for="defaultCheck">
-										  Colombian 
-										</label>
-									</div>
-									<div class="row">
-										<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="italian(this)">
-										<label class="form-check-label" for="defaultCheck">
-										  Italian 
-										</label>
-									</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="healthy(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Healthy 
-									</label>
-								</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange="japanese(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Japanese 
-									</label>
-								</div>
-								<div class="row">
-									<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" onchange= "mexican(this)">
-									<label class="form-check-label" for="defaultCheck">
-									  Mexican 
-									</label>
-								</div>
-							   </div>
-							  </div>
-						</div>
-					  </div>	
-				</div>
-			</div>
-		</div>
-		</section>
-		<!-- Hero Section end -->
+    <!-- Restaurant Section -->
+    <section class="property-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>All restaurants</h2>
+        </div>
+        <!-- Div to store restaurant list -->
+        <div id="list"></div>
+      </div>
+    </section>
+    <!-- Restaurant Section end -->
 
-		<!-- Restaurant Section -->
-		<section class="property-section">
-			<div class="container">
-				<div class="section-title">
-					<h2>All restaurants</h2>
-				</div>
-				<!-- Div to store restaurant list -->
-				<div id="list">
-				</div>
-			</div>
-		</section>
-		<!-- Restaurant Section end -->
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Popper.jst-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Boostrap.js -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
 
-		<!-- JQuery -->
-		<script
-			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-			crossorigin="anonymous"
-		></script>
-		<!-- Popper.jst-->
-		<script
-			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-			crossorigin="anonymous"
-		></script>
-		<!-- Boostrap.js -->
-		<script
-			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-			crossorigin="anonymous"
-		></script>
-
-		<!-- custom JS scripts -->
-		<script src="javascripts/main.js"></script>
-	</body>
+    <!-- custom JS scripts -->
+    <script src="javascripts/main.js"></script>
+  </body>
 </html>

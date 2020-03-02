@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 var express = require("express");
 var router = express.Router();
 
@@ -22,9 +23,9 @@ router.get("/getRestaurants", function(req, res) {
 router.get("/details/:id", (req, res) => {
   console.log("Llegue a los detalles");
   const id = req.params.id;
-  console.log("identificador",req.params.id);
+  console.log("identificador", req.params.id);
   mu.connect()
-    .then(client => mu.getRestaurant(client,id))
+    .then(client => mu.getRestaurant(client, id))
     .then(restaurant => {
       res.send(`
         ${restaurant.map(g => details.buildFile(g))}`);
@@ -35,9 +36,9 @@ router.get("/details/:id", (req, res) => {
 router.get("/usuarios/:id", (req, res) => {
   console.log("Llegue a los usuarios");
   const id = req.params.id;
-  console.log("identificador",req.params.id);
+  console.log("identificador", req.params.id);
   mu.connect()
-    .then(client => mu.getUser(client,id))
+    .then(client => mu.getUser(client, id))
     .then(user => res.json(user))
     .catch(err => console.log(err));
 });
@@ -45,7 +46,20 @@ router.get("/getUsers", function(req, res) {
   console.log("Backend!!");
   //Client side rendering
   mu.connect()
-    .then(client => mu.getUsers(client,(users) => res.json(users)))
+    .then(client => mu.getUsers(client, users => res.json(users)))
+    //for Front side rendering send the html instead of the json file
+    .catch(err => console.log(err));
+});
+router.post("/restaurant", function(req, res) {
+  console.log("Backend!!");
+  console.log("Llego post al index!!");
+
+  let body = req.body;
+  //Client side rendering
+  mu.connect()
+    .then(client =>
+      mu.addRestaurant(client, body, restaurant => res.json(restaurant))
+    )
     //for Front side rendering send the html instead of the json file
     .catch(err => console.log(err));
 });
