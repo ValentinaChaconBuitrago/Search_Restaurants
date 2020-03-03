@@ -1,3 +1,6 @@
+
+<!-- rEsta muy bien desarrollado, tiene buena documentacion de cada cosa y adicionalmente hay buenos meta tags, a paesar de la buena documentacion faltan ciertas cosas por doocumentar-->
+
 function DetailsUtils() {
   const mu = {};
 
