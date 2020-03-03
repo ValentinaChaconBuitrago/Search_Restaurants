@@ -1,7 +1,12 @@
+/*El archivo mongoUtils esta muy bien organizado , presentan una estructura clara y no presenta errores de sintaxis , 
+lo unico a resaltar es que hace falta ddocumentacion que explique de manera concreta que hace cada cosa*/
+
 /* eslint-disable no-console */
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 
+
+/* eslint-disable no-console */
 function MongoUtils() {
   const mu = {};
 
@@ -15,6 +20,7 @@ function MongoUtils() {
     return client.connect();
   };
 
+  /* Documentar como funciona la funcion */
   mu.getDocuments = client => {
     const collectionRestaurant = client.db("web").collection("restaurants");
     console.log("Getting documents");
@@ -27,6 +33,8 @@ function MongoUtils() {
         client.close();
       });
   };
+  
+  /* Documentar como funciona la funcion */
   mu.addRestaurant = (client, body, callback) => {
     const col = client.db("web").collection("restaurants");
     console.log(body);
@@ -38,6 +46,8 @@ function MongoUtils() {
     console.log(resp);
     callback("OK");
   };
+  
+  /* Documentar como funciona la funccion */
   mu.getUsers = (client, callback) => {
     const col = client.db("web").collection("users");
     console.log("Getting documents X2");
@@ -49,6 +59,7 @@ function MongoUtils() {
     });
   };
 
+  /* Dcoumentar como funciona la funcion */
   mu.getRestaurant = (client, id) => {
     const collectionRestaurant = client.db("web").collection("restaurants");
     console.log("Getting restaurant");
@@ -61,6 +72,8 @@ function MongoUtils() {
         client.close();
       });
   };
+  
+  /* Documentar como funciona la funcion */
   mu.getUser = (client, id) => {
     const collectionUser = client.db("web").collection("users");
     console.log("Getting users");
