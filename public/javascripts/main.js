@@ -12,6 +12,7 @@ function updateLogged() {
       "Content-Type": "application/json"
     }
   });
+  fetch("/log").then(res => checkLogged(res.body));
 }
 function checkLogged(a) {
   logge = a.locked;
@@ -22,8 +23,6 @@ function checkLogged(a) {
   return logge;
 }
 const renderRestaurants = data => {
-  fetch("/log").then(res => checkLogged(res.body));
-
   console.log("got data", data);
   datos = data;
   const target = document.getElementById("list");
@@ -83,20 +82,8 @@ const renderRestaurants = data => {
     row.append(div);
     console.log("Llego al final");
   }
-  if (logged == true) {
-    document.getElementById("loginB").style.visibility = "hidden";
-  }
 };
 
-fetch("./getRestaurants")
-  .then(res => res.json())
-  .then(renderRestaurants)
-  .catch(() => {
-    const div = document.createElement("div");
-    div.className = "alert alert-danger";
-    div.textContent = "Error downloading data";
-    document.getElementById("target").append(div);
-  });
 fetch("./getRestaurants")
   .then(res => res.json())
   .then(renderRestaurants)
@@ -145,7 +132,7 @@ function addUser(user) {
     .then(response => {
       console.log("Response:", response);
       if (response == "OK") {
-        window.localStorage.logged = true;
+        updateLogged();
         document.getElementById("loginB").style.visibility = "hidden";
 
         document.getElementById("addB").style.display = "none";
@@ -155,7 +142,6 @@ function addUser(user) {
     });
 }
 function login() {
-  updateLogged();
   let username = document.getElementById("usuariologin").value;
   let hashpass = hashCode(document.getElementById("contrasenhalogin").value);
   var user = JSON.stringify({
@@ -168,8 +154,7 @@ function valeOno(bool) {
   if (bool == false) {
     alert("Usuario o contraseña incorrectos");
   } else {
-    updateLogged();
-    filtering();
+    s;
   }
 }
 
@@ -351,10 +336,6 @@ let filtering = () => {
       row.append(div);
       console.log("Llego al final");
     }
-  }
-  fetch("/log").then(res => checkLogged(res.body));
-  if (logged == true) {
-    document.getElementById("loginB").style.visibility = "hidden";
   }
 };
 
