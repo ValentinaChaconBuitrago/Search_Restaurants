@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
+/* muy buen trabajo no hay errores de sintaxis les faltdo documentacion en el codifo y adicionalmente el use strict*/
+
+"Use strict";
 let datos;
 const renderRestaurants = data => {
   console.log("got data", data);
@@ -63,6 +66,7 @@ const renderRestaurants = data => {
   }
 };
 
+/* documentacion */
 let validate = (id, pass) => {
   fetch(`./usuarios/${id}`)
     .then(res => res.json())
@@ -79,6 +83,8 @@ let validate = (id, pass) => {
       return "error";
     });
 };
+
+/* documentacion */
 fetch("./getRestaurants")
   .then(res => res.json())
   .then(renderRestaurants)
@@ -104,59 +110,73 @@ let japanesep = false;
 let healthyp = false;
 let mexicanp = false;
 
+/* documentacion */
 function breakfast(param) {
   breakfastp = $(param).is(":checked");
   filtering();
   console.log(validate("juandarango", "juandarango"));
 }
+/* documentacion */
 function lunch(param) {
   lunchp = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function dinner(param) {
   dinnerp = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function chico(param) {
   chicop = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function chapinero(param) {
   chapinerop = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function salitre(param) {
   salitrep = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function parque(param) {
   parquep = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function usaquen(param) {
   usaquenp = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function centro(param) {
   centrop = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function colombian(param) {
   colombianp = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function italian(param) {
   italianp = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function japanese(param) {
   japanesep = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function mexican(param) {
   mexicanp = $(param).is(":checked");
   filtering();
 }
+/* documentacion */
 function healthy(param) {
   healthyp = $(param).is(":checked");
   filtering();
@@ -224,6 +244,7 @@ let filtering = () => {
   }
 };
 
+/* documentacion */
 function vale(obj) {
   let val = true;
   if (!(obj.specialty == "Breakfast") * breakfastp == true) {
@@ -284,6 +305,7 @@ function vale(obj) {
   }
   return val;
 }
+/* documentacion */
 function addRestaurant(restaurant) {
   fetch("./restaurant", {
     method: "POST", // or 'PUT'
