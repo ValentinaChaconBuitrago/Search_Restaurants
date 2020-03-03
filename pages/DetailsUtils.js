@@ -80,11 +80,7 @@ function DetailsUtils() {
 									</div>
 								</div>
 								<div class="col-lg-5 text-left text-lg-right">
-									<a   class="offer-btn">
-										<button onclick='setActual("${restaurant._id}")'>
-									Rate restaurant
-									</button>
-										</a>
+									
 								</div>
 							</div>
 						</div>
