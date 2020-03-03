@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 var express = require("express");
 var router = express.Router();
-
+var logged = false;
 //En la carpeta anterior es que se encuentra el archivo
 const MongoUtils = require("../db/MongoUtils.js");
 const DetailUtils = require("../pages/DetailsUtils.js");
@@ -18,6 +18,15 @@ router.get("/getRestaurants", function(req, res) {
     //for Front side rendering send the html instead of the json file
     .then(restaurants => res.json(restaurants))
     .catch(err => console.log(err));
+});
+
+router.get("/log", function(req, res) {
+  res.send(logged);
+});
+router.post("/logUpdate", function(req, res) {
+  console.log("ME LLAMARON", req.body.logged);
+  logged = req.body.logged;
+  res.send(logged);
 });
 
 router.get("/details/:id", (req, res) => {
@@ -46,10 +55,22 @@ router.get("/getUsers", function(req, res) {
   console.log("Backend!!");
   //Client side rendering
   mu.connect()
-    .then(client => mu.getUsers(client, users => res.json(users)))
+    .then(client => mu.getUsers(client, users => res.json(users), true))
     //for Front side rendering send the html instead of the json file
     .catch(err => console.log(err));
 });
+router.post("/user", function(req, res) {
+  console.log("Backend!!");
+  console.log("Llego post user al index!!");
+
+  let body = req.body;
+  //Client side rendering
+  mu.connect()
+    .then(client => mu.addUser(client, body, user => res.json(user)))
+    //for Front side rendering send the html instead of the json file
+    .catch(err => console.log(err));
+});
+
 router.post("/restaurant", function(req, res) {
   console.log("Backend!!");
   console.log("Llego post al index!!");
@@ -61,6 +82,15 @@ router.post("/restaurant", function(req, res) {
       mu.addRestaurant(client, body, restaurant => res.json(restaurant))
     )
     //for Front side rendering send the html instead of the json file
+    .catch(err => console.log(err));
+});
+router.put("/restaurant/:id", function(req, res) {
+  var body = req.body;
+  let id = req.param.id;
+  mu.connect()
+    .then(client =>
+      mu.updateRestaurant(client, body, id, restaurant => res.json(restaurant))
+    )
     .catch(err => console.log(err));
 });
 module.exports = router;

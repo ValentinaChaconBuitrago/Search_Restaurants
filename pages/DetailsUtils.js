@@ -80,9 +80,11 @@ function DetailsUtils() {
 									</div>
 								</div>
 								<div class="col-lg-5 text-left text-lg-right">
-									<a href="#" class="offer-btn"
-										>Rate restaurant</a
-									>
+									<a   class="offer-btn">
+										<button onclick='setActual("${restaurant._id}")'>
+									Rate restaurant
+									</button>
+										</a>
 								</div>
 							</div>
 						</div>
@@ -91,21 +93,7 @@ function DetailsUtils() {
 							<p>
 								${restaurant.description}
 							</p>
-							<h4>Comments</h4>
-							<p>
-								TODO: Incluir los comentarios------------------
-
-
-								Proin vulputate congue rutrum. Fusce lobortis a
-								enim eget tempus. Class aptent taciti sociosqu
-								ad litora torquent per conubia nostra, per
-								inceptos himenaeos. Suspendisse potenti. Ut
-								gravida mattis magna, non varius lorem sodales
-								nec. In libero orci, ornare non nisl a, auctor
-								euismod purus. Morbi pretium interdum
-								vestibulum. Fusce nec eleifend ipsum. Sed non
-								blandit tellus.
-							</p>
+							
 						</div>
 
 					<!--

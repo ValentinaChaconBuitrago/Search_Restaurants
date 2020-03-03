@@ -1,7 +1,29 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 let datos;
+let logge;
+
+function updateLogged() {
+  resp = JSON.stringify({ logged: true });
+  fetch("/logUpdate", {
+    method: "POST", // or 'PUT'
+    body: resp, // data can be `string` or {object}!
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+}
+function checkLogged(a) {
+  logge = a.locked;
+  console.log("LLEGOOOO", logge);
+  if (logge == true) {
+    document.getElementById("loginB").style.visibility = "hidden";
+  }
+  return logge;
+}
 const renderRestaurants = data => {
+  fetch("/log").then(res => checkLogged(res.body));
+
   console.log("got data", data);
   datos = data;
   const target = document.getElementById("list");
@@ -61,24 +83,20 @@ const renderRestaurants = data => {
     row.append(div);
     console.log("Llego al final");
   }
+  if (logged == true) {
+    document.getElementById("loginB").style.visibility = "hidden";
+  }
 };
 
-let validate = (id, pass) => {
-  fetch(`./usuarios/${id}`)
-    .then(res => res.json())
-    .then(res => {
-      for (const user of res) {
-        if (user.password == pass) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    })
-    .catch(() => {
-      return "error";
-    });
-};
+fetch("./getRestaurants")
+  .then(res => res.json())
+  .then(renderRestaurants)
+  .catch(() => {
+    const div = document.createElement("div");
+    div.className = "alert alert-danger";
+    div.textContent = "Error downloading data";
+    document.getElementById("target").append(div);
+  });
 fetch("./getRestaurants")
   .then(res => res.json())
   .then(renderRestaurants)
@@ -103,11 +121,89 @@ let italianp = false;
 let japanesep = false;
 let healthyp = false;
 let mexicanp = false;
+//Registrar un usuario
+function register() {
+  window.localStorage.logged = false;
+  let username = document.getElementById("usuarioregistro").value;
+  let hashpass = hashCode(document.getElementById("contrasenharegistro").value);
+  var user = JSON.stringify({
+    username: username,
+    password: hashpass
+  });
+  addUser(user);
+}
+function addUser(user) {
+  fetch("./user", {
+    method: "POST", // or 'PUT'
+    body: user, // data can be `string` or {object}!
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => res.json())
+    .catch(error => console.error("Error:", error))
+    .then(response => {
+      console.log("Response:", response);
+      if (response == "OK") {
+        window.localStorage.logged = true;
+        document.getElementById("loginB").style.visibility = "hidden";
 
+        document.getElementById("addB").style.display = "none";
+      } else {
+        alert("El nombre de usuario ya existe");
+      }
+    });
+}
+function login() {
+  updateLogged();
+  let username = document.getElementById("usuariologin").value;
+  let hashpass = hashCode(document.getElementById("contrasenhalogin").value);
+  var user = JSON.stringify({
+    username: username,
+    password: hashpass
+  });
+  validate(username, hashpass, x => valeOno(x));
+}
+function valeOno(bool) {
+  if (bool == false) {
+    alert("Usuario o contraseña incorrectos");
+  } else {
+    updateLogged();
+    filtering();
+  }
+}
+
+//hashcode function
+function hashCode(s) {
+  return s.split("").reduce(function(a, b) {
+    a = (a << 5) - a + b.charCodeAt(0);
+    return a & a;
+  }, 0);
+}
+let validate = (id, pass, callback) => {
+  fetch("/usuarios/" + id)
+    .then(res => res.json())
+    .then(res => {
+      console.log(res, "LLEGOOO");
+      console.log(res[0].password);
+      console.log(pass);
+
+      if (res[0].password == pass) {
+        console.log("SISISI");
+        callback(true);
+      } else {
+        console.log("NONONO");
+        callback(false);
+      }
+    })
+    .catch(() => {
+      return "error";
+    });
+};
+//funcionespara revisar los filtros cada vez que los oprimen
 function breakfast(param) {
   breakfastp = $(param).is(":checked");
   filtering();
-  console.log(validate("juandarango", "juandarango"));
 }
 function lunch(param) {
   lunchp = $(param).is(":checked");
@@ -171,7 +267,9 @@ function createRestaurant() {
   let closinghours = document.getElementById("closinghours").value;
   let type = document.getElementById("type").value;
   let specialty = document.getElementById("specialty").value;
-  let rating = 4;
+  let ratingsList = [];
+  let rating = 5;
+  let reviews = [];
   let price = document.getElementById("price").value;
   let image = document.getElementById("image").value;
   let description = document.getElementById("description").value;
@@ -184,6 +282,8 @@ function createRestaurant() {
     type: type,
     specialty: specialty,
     rating: rating,
+    ratingsList: ratingsList,
+    reviews: reviews,
     price: price,
     image: image,
     description: description
@@ -251,6 +351,10 @@ let filtering = () => {
       row.append(div);
       console.log("Llego al final");
     }
+  }
+  fetch("/log").then(res => checkLogged(res.body));
+  if (logged == true) {
+    document.getElementById("loginB").style.visibility = "hidden";
   }
 };
 

@@ -38,6 +38,22 @@ function MongoUtils() {
     console.log(resp);
     callback("OK");
   };
+  mu.updateRestaurant = (client, body, id, callback) => {
+    const col = client.db("web").collection("restaurants");
+    console.log(body);
+    let resp = col.findOneAndUpdate(
+      { id: id },
+      body,
+      // eslint-disable-next-line no-unused-vars
+      function(err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+        client.close();
+      }
+    );
+    console.log(resp);
+    callback("OK");
+  };
   mu.getUsers = (client, callback) => {
     const col = client.db("web").collection("users");
     console.log("Getting documents X2");
@@ -48,7 +64,26 @@ function MongoUtils() {
       callback(data);
     });
   };
-
+  mu.addUser = (client, body, callback) => {
+    console.log(body, "BODY");
+    const validar = user => {
+      console.log("USUARIO", user);
+      if (user.length == 0) {
+        const col = client.db("web").collection("users");
+        console.log(body);
+        let resp = col.insertOne(body, function(err, res) {
+          if (err) throw err;
+          console.log("1 document inserted");
+          client.close();
+        });
+        console.log(resp);
+        callback("OK");
+      } else {
+        callback("El usuario ya existe");
+      }
+    };
+    mu.getUser(client, body.username, false).then(usr => validar(usr));
+  };
   mu.getRestaurant = (client, id) => {
     const collectionRestaurant = client.db("web").collection("restaurants");
     console.log("Getting restaurant");
@@ -61,7 +96,7 @@ function MongoUtils() {
         client.close();
       });
   };
-  mu.getUser = (client, id) => {
+  mu.getUser = (client, id, bool) => {
     const collectionUser = client.db("web").collection("users");
     console.log("Getting users");
     //retorna una promesa
@@ -70,7 +105,9 @@ function MongoUtils() {
       .toArray()
       .finally(() => {
         console.log("closing client");
-        client.close();
+        if (bool == true) {
+          client.close();
+        }
       });
   };
 
