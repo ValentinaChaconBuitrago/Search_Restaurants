@@ -1,3 +1,8 @@
+/*Esta muy bien la estructura del codigo y no presentan errores de sintaxis, no hacen uso del strict y falta documentacion 
+respecto a algunos sectores del codigo.*/
+
+"use strict";
+
 /* eslint-disable no-console */
 var express = require("express");
 var router = express.Router();
@@ -20,6 +25,7 @@ router.get("/getRestaurants", function(req, res) {
     .catch(err => console.log(err));
 });
 
+// Falta documentacion 
 router.get("/details/:id", (req, res) => {
   console.log("Llegue a los detalles");
   const id = req.params.id;
@@ -33,6 +39,7 @@ router.get("/details/:id", (req, res) => {
     .catch(err => console.log(err));
 });
 
+// Falta documentacion 
 router.get("/usuarios/:id", (req, res) => {
   console.log("Llegue a los usuarios");
   const id = req.params.id;
@@ -42,6 +49,7 @@ router.get("/usuarios/:id", (req, res) => {
     .then(user => res.json(user))
     .catch(err => console.log(err));
 });
+// Falta documentacion 
 router.get("/getUsers", function(req, res) {
   console.log("Backend!!");
   //Client side rendering
@@ -50,6 +58,8 @@ router.get("/getUsers", function(req, res) {
     //for Front side rendering send the html instead of the json file
     .catch(err => console.log(err));
 });
+
+// Falta documentacion 
 router.post("/restaurant", function(req, res) {
   console.log("Backend!!");
   console.log("Llego post al index!!");
