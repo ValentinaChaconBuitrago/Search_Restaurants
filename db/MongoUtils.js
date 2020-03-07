@@ -7,14 +7,61 @@ function MongoUtils() {
 
   mu.connect = () => {
     const uri =
-      "mongodb+srv://prueba:CLAVE@cluster0-wnneh.azure.mongodb.net/test?retryWrites=true&w=majority";
-
+      "mongodb+srv://chicho:123@cluster0-6emja.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true });
     console.log("Connecting");
     //retorna una promesa
     return client.connect();
   };
+  mu.listDb = client => {
+    // Connection url
 
+    const db = client.db();
+
+    return db
+      .admin()
+      .listDatabases()
+      .finally(() => client.close());
+  };
+  mu.listCol = (client, bd) => {
+    // Connection url
+
+    const db = client.db(bd);
+    return db
+      .listCollections()
+      .toArray()
+      .finally(() => client.close());
+  };
+  mu.getDocuments = (client, db, col) => {
+    col = "" + col;
+    const collectionRestaurant = client.db(db).collection(col);
+    console.log("Getting documents");
+    //retorna una promesa
+    return collectionRestaurant
+      .find()
+      .sort({ _id: -1 })
+      .limit(50)
+      .toArray()
+      .finally(() => {
+        console.log("closing client");
+        client.close();
+      });
+  };
+
+  mu.addDocument = (client, db, col, body, callback) => {
+    console.log(body, "BODY");
+
+    const cole = client.db(db).collection(col);
+    console.log(body);
+    let resp = cole.insertOne(body, function(err, res) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      client.close();
+      callback("OK");
+    });
+  };
+
+  /*
   mu.getDocuments = client => {
     const collectionRestaurant = client.db("web").collection("restaurants");
     console.log("Getting documents");
@@ -27,6 +74,7 @@ function MongoUtils() {
         client.close();
       });
   };
+  */
   mu.addRestaurant = (client, body, callback) => {
     const col = client.db("web").collection("restaurants");
     console.log(body);

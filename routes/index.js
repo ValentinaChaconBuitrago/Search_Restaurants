@@ -9,88 +9,58 @@ const DetailUtils = require("../pages/DetailsUtils.js");
 const mu = MongoUtils();
 const details = DetailUtils();
 
-// Data endpoint: retorna un archivo json
-router.get("/getRestaurants", function(req, res) {
-  console.log("Backend!!");
-  //Client side rendering
+router.get("/db", (req, res) => {
+  console.log("creando bd");
   mu.connect()
-    .then(mu.getDocuments)
-    //for Front side rendering send the html instead of the json file
-    .then(restaurants => res.json(restaurants))
-    .catch(err => console.log(err));
-});
+    .then(client => mu.listDb(client))
+    .then(dbs => {
+      let obj = dbs.databases;
 
-router.get("/log", function(req, res) {
-  res.send(logged);
-});
-router.post("/logUpdate", function(req, res) {
-  console.log("ME LLAMARON", req.body.logged);
-  logged = req.body.logged;
-  res.send(logged);
-});
-
-router.get("/details/:id", (req, res) => {
-  console.log("Llegue a los detalles");
-  const id = req.params.id;
-  console.log("identificador", req.params.id);
-  mu.connect()
-    .then(client => mu.getRestaurant(client, id))
-    .then(restaurant => {
+      console.log(obj);
+      console.log(typeof obj);
       res.send(`
-        ${restaurant.map(g => details.buildFile(g))}`);
+        ${details.generar(obj)}`);
     })
     .catch(err => console.log(err));
 });
-
-router.get("/usuarios/:id", (req, res) => {
-  console.log("Llegue a los usuarios");
-  const id = req.params.id;
-  console.log("identificador", req.params.id);
-  mu.connect()
-    .then(client => mu.getUser(client, id))
-    .then(user => res.json(user))
-    .catch(err => console.log(err));
-});
-router.get("/getUsers", function(req, res) {
+router.get("/listCols/:bd", function(req, res) {
   console.log("Backend!!");
+  const bd = req.params.bd;
   //Client side rendering
   mu.connect()
-    .then(client => mu.getUsers(client, users => res.json(users), true))
+    .then(client => mu.listCol(client, bd))
     //for Front side rendering send the html instead of the json file
+    .then(datos => res.json(datos))
     .catch(err => console.log(err));
 });
-router.post("/user", function(req, res) {
+router.get("/getDocuments/:bd/:col", function(req, res) {
+  console.log("ENTRE AL DOCUMENTS!!");
+  const bd = req.params.bd;
+  const col = req.params.col;
+  console.log(11);
+
+  //Client side rendering
+  mu.connect()
+    .then(client => mu.getDocuments(client, bd, col))
+    //for Front side rendering send the html instead of the json file
+    .then(datos => res.json(datos))
+    .catch(err => console.log(err));
+});
+
+router.post("/document/:bd/:col", function(req, res) {
   console.log("Backend!!");
-  console.log("Llego post user al index!!");
+  console.log("Llego post document al index!!");
+  const bd = req.params.bd;
+  const col = req.params.col;
 
   let body = req.body;
   //Client side rendering
   mu.connect()
-    .then(client => mu.addUser(client, body, user => res.json(user)))
+    .then(client => {
+      mu.addDocument(client, bd, col, body, user => res.json(user));
+    })
     //for Front side rendering send the html instead of the json file
     .catch(err => console.log(err));
 });
 
-router.post("/restaurant", function(req, res) {
-  console.log("Backend!!");
-  console.log("Llego post al index!!");
-
-  let body = req.body;
-  //Client side rendering
-  mu.connect()
-    .then(client =>
-      mu.addRestaurant(client, body, restaurant => res.json(restaurant))
-    )
-    //for Front side rendering send the html instead of the json file
-    .catch(err => console.log(err));
-});
-router.put("/restaurant/:id", function(req, res) {
-  var body = req.body;
-  let id = req.param.id;
-  mu.connect()
-    .then(client =>
-      mu.updateRestaurant(client, body, id, restaurant => res.json(restaurant))
-    )
-    .catch(err => console.log(err));
-});
 module.exports = router;
