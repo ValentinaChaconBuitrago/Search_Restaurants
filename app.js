@@ -1,3 +1,4 @@
+/* Muy buena estructura del documento no hay errores de sintaxis  */
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
